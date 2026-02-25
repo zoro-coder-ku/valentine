@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Will You Be My Valentine? ❤️</title>
+
+<style>
+body{
+    margin:0;
+    height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    font-family:'Segoe UI', sans-serif;
+    background:linear-gradient(135deg,#ff4e8a,#ff9a9e);
+    overflow:hidden;
+}
+
+.card{
+    background:white;
+    padding:40px;
+    border-radius:20px;
+    text-align:center;
+    box-shadow:0 15px 40px rgba(0,0,0,0.2);
+    animation:fadeIn 1.2s ease;
+    max-width:400px;
+}
+
+h1{
+    color:#ff2e63;
+    font-size:30px;
+    margin-bottom:10px;
+}
+
+p{
+    color:#555;
+    font-size:16px;
+}
+
+.buttons{
+    margin-top:25px;
+}
+
+button{
+    padding:12px 28px;
+    margin:10px;
+    border:none;
+    border-radius:30px;
+    font-size:18px;
+    cursor:pointer;
+    transition:0.3s;
+}
+
+.yes{
+    background:#ff2e63;
+    color:white;
+}
+
+.no{
+    background:#eee;
+    color:#333;
+}
+
+button:hover{
+    transform:scale(1.1);
+}
+
+@keyframes fadeIn{
+    from{opacity:0; transform:scale(0.8);}
+    to{opacity:1; transform:scale(1);}
+}
+
+/* Floating hearts */
+.heart{
+    position:absolute;
+    color:white;
+    font-size:20px;
+    animation: float 6s linear infinite;
+}
+
+@keyframes float{
+    0%{transform:translateY(100vh);}
+    100%{transform:translateY(-10vh);}
+}
+</style>
+</head>
+
+<body>
+
+<div class="card">
+    <h1>Will You Be My Valentine? ❤️</h1>
+    <p>You make my life happier every day 💕</p>
+    <div class="buttons">
+        <button class="yes" onclick="showLove()">Yes 💖</button>
+        <button class="no" onclick="noClick()">No 😢</button>
+    </div>
+</div>
+
+<script>
+function showLove(){
+    document.body.innerHTML = `
+    <div style="display:flex;justify-content:center;align-items:center;height:100vh;background:#ff2e63;color:white;font-family:sans-serif;text-align:center;">
+        <div>
+            <h1>Yayyyy!!! ❤️💍</h1>
+            <h2>You Are My Valentine Forever 😘</h2>
+            <p>I Love You So Much 💖</p>
+        </div>
+    </div>`;
+}
+
+function noClick(){
+    const noBtn = document.querySelector('.no');
+    noBtn.innerHTML = "Yes 💖";
+    noBtn.classList.remove('no');
+    noBtn.classList.add('yes');
+    noBtn.onclick = showLove;
+}
+
+// Floating hearts generator
+for(let i=0;i<25;i++){
+    let heart=document.createElement("div");
+    heart.className="heart";
+    heart.innerHTML="❤️";
+    heart.style.left=Math.random()*100+"vw";
+    heart.style.animationDuration=(Math.random()*3+3)+"s";
+    document.body.appendChild(heart);
+}
+</script>
+
+</body>
+</html>
